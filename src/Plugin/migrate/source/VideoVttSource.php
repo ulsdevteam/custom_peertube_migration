@@ -224,12 +224,12 @@ protected function videoCaptions_handler(array $arr_data, array $retries) {
 			if ($request_status === 200) {
                 		if (!empty($result_data['data'])){
                         		foreach ($result_data['data'] as $item) {
-                                		if (empty($item['captionPath'])) {
+                                		if (empty($item['fileUrl'])) {
                                         		continue;
                                 		}
                                 		$vtt_file_ids[] = [
 							'video_id' => $arr_data['video_id'],
-                                        		'source_caption_urlpath' => $arr_data['prefix'] . $item['captionPath'],
+                                        		'source_caption_urlpath' => $item['fileUrl'],
                                         		'source_media_use' => $this->media_use->id() ?? '',
 							'source_media_of' => $arr_data['repo_item_id']
                                         	];
